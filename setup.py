@@ -2,7 +2,7 @@ __author__ = 'M'
 from setuptools import setup
 import codecs
 
-long_description = codecs.open("README.md", encoding='utf-8').read()
+# long_description = codecs.open("README.md", encoding='utf-8').read()
 
 VERSION = '0.1'
 PYPI_VERSION = '0.1'
@@ -10,7 +10,7 @@ PYPI_VERSION = '0.1'
 setup(
     name='pytest-sandbox',
     description='Creates a sandbox temp directory and executes tests inside it',
-    long_description=long_description,
+    # long_description=long_description,
     version=VERSION,
     url='https://github.com/manojklm/pytest-sandbox/',
     download_url='https://github.com/manojklm/pytest-sandbox/tarball/%s' % PYPI_VERSION,
