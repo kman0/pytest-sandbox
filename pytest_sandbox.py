@@ -22,6 +22,15 @@ def pytest_addoption(parser):
     parser.addini("sandbox_path", "path to sandbox dir")
 
 
+def pytest_report_header(config, startdir):
+    if not config.option.sandbox:
+        print('sandbox: disabled by --no-sandbox')
+    elif 'sandbox_path' in config.inicfg:
+        print('sandbox: %s' % config.inicfg['sandbox_path'])
+    else:
+        print('sandbox: .sandbox/')
+
+
 @pytest.fixture(autouse=True)
 def enter_sandbox(request, pytestconfig):
     if not pytestconfig.option.sandbox:
@@ -43,10 +52,10 @@ def enter_sandbox(request, pytestconfig):
     sand_path.makedirs_p()
 
     os.chdir(sand_path)
-    print('cwd: %s' % os.getcwd())
+    print('sandbox cwd: %s' % os.getcwd())
 
     def exit_sandbox():
         os.chdir(pytestconfig._sandbox_old_dir)
-        print('teardown cwd: %s' % os.getcwd())
+        # print('teardown cwd: %s' % os.getcwd())
         pytestconfig._sandbox_old_dir = None
     request.addfinalizer(exit_sandbox)
