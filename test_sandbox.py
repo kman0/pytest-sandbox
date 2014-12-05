@@ -48,6 +48,25 @@ def test_no_configure_print(testdir):
     result.stdout.fnmatch_lines_random("*sandbox: .sandbox*")
 
 
+def test_sandbox_path_print(testdir):
+    init_path_ini_config(testdir)
+    result = testdir.runpytest(testdir.tmpdir)
+    assert result.ret == 0
+    result.stdout.fnmatch_lines_random("*sandbox: sand_box*")
+
+
+def test_no_sandbox(testdir):
+    testdir.makepyfile("""
+    from path import Path
+    def test_func_no_sb():
+        assert Path.getcwd().name == "%s"
+    """ % Path.getcwd().name)
+
+    result = testdir.runpytest('--no-sandbox', testdir.tmpdir)
+    assert result.ret == 0
+    result.stdout.fnmatch_lines_random("*sandbox: disabled by --no-sandbox*")
+
+
 def test_folder_name(testdir):
     init_no_ini_config(testdir)
     result = testdir.runpytest(testdir.tmpdir)
