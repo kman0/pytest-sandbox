@@ -17,7 +17,7 @@ setup(
     keywords=['pytest', 'sandbox', 'tempdir', 'tests', 'plugin'],
     license='MIT',
     author='mk',
-    author_email='manojklm@gmail.com',
+    author_email='manojklm+gh@gmail.com',
     entry_points={'pytest11': ['sandbox = pytest_sandbox']},
     py_modules=['pytest_sandbox'],
     zip_safe=False,

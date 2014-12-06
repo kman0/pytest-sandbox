@@ -9,10 +9,11 @@ python:
 env:
     - PIP_USE_MIRRORS=true
 
-# command to install dependencies
+# command to install dependencies 
 install:
   - "pip install pytest"
+  - "pip install path.py"
   - "pip install ."
 
 # command to run tests
-script: "py.test tests"
+script: "py.test test_sandbox.py"
