@@ -2,18 +2,19 @@ __author__ = 'M'
 from setuptools import setup
 import codecs
 
-# long_description = codecs.open("README.md", encoding='utf-8').read()
-
-VERSION = '0.1'
-PYPI_VERSION = '0.1'
-
+VERSION = '0.2'
+PYPI_VERSION = '0.2'
+DESCRIPTION = (
+    "Creates a sandbox temp directory and executes tests inside it"
+)
 setup(
     name='pytest-sandbox',
-    description='Creates a sandbox temp directory and executes tests inside it',
-    # long_description=long_description,
+    description=DESCRIPTION,
+    long_description=DESCRIPTION,
     version=VERSION,
     url='https://github.com/manojklm/pytest-sandbox/',
     download_url='https://github.com/manojklm/pytest-sandbox/tarball/%s' % PYPI_VERSION,
+    keywords=['pytest', 'sandbox', 'tempdir', 'tests', 'plugin'],
     license='MIT',
     author='mk',
     author_email='manojklm@gmail.com',
