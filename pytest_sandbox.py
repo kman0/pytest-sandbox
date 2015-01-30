@@ -42,7 +42,8 @@ def enter_sandbox(request, pytestconfig):
 
     pytestconfig._sandbox_old_dir = Path.getcwd()
 
-    mod_dir, _, func = request.node.nodeid.partition('::')
+    mod_dir, _, func = request.node.nodeid.rpartition('::')
+    mod_dir = mod_dir.replace('::', '/')
     sand_path = Path(Path(sandbox_prefix).joinpath(Path(mod_dir).joinpath(func))).abspath()
 
     if sand_path.isdir():
